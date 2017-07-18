@@ -54,14 +54,21 @@ public final class QueryUtils {
 
         try {
             JSONObject baseResponse = new JSONObject(jsonResponse);
-            JSONArray bookArray = baseResponse.getJSONArray("items");
+            JSONArray bookArray = new JSONArray();
+            if (baseResponse.has("items")) {
+                bookArray = baseResponse.getJSONArray("items");
+            }
+
             int numOfBooks = bookArray.length();
 
             for (int i = 0; i < numOfBooks; i++) {
                 JSONObject currentBook = bookArray.getJSONObject(i).getJSONObject("volumeInfo");
 
                 String title = currentBook.getString("title");
-                JSONArray authorsJSON = currentBook.getJSONArray("authors");
+                JSONArray authorsJSON = (new JSONArray()).put("Author N/A");
+                if (currentBook.has("authors")) {
+                    authorsJSON = currentBook.getJSONArray("authors");
+                }
 
                 int numOfAuthors = authorsJSON.length();
                 String[] authors = new String[numOfAuthors];
