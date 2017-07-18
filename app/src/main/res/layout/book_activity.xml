@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/book_search_bar"
+        style="@style/bookSearchBar">
+
+        <EditText
+            android:id="@+id/search_text"
+            style="@style/searchText"/>
+
+        <Button
+            android:id="@+id/search_button"
+            style="@style/searchButton"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/book_search_bar" />
+
+    <TextView
+        android:id="@+id/empty_view"
+        style="@style/emptyView" />
+
+    <ProgressBar
+        android:id="@+id/load_view"
+        style="@style/customProgressBar" />
+
+
+</RelativeLayout>
